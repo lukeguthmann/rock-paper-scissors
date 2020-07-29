@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <!-- rows must be placed within CONTAINERS. A container can be -->
     <div class="container">
         <div class='row'>
@@ -21,11 +22,10 @@
             <!-- -------USER PANEL ------------- -->
             <!-- the SM between col and 4 determins how small the screen can get before the columns start to stack on top of eachother. the
                 sm will allow the window to get quite small before it starts to stack, while Xl will stack on top when viewport is much larger -->
-            <div class="col-sm-4" style='background-color: yellow;'>
-                <div id='playerRock'>Rock</div>
-                <div id='displayChoice'></div>
-                <div id='playerPaper'>Paper</div>
-                <div id='playerScissors'>Scissors</div>
+            <div class="col-sm-4 d-flex align-items-center p-1" style='background-color: yellow;'>
+                <div id='displayPlayersChoice'>
+
+                </div>
             </div>
             
             <!-- -------timer PANEL ------------- -->
@@ -37,11 +37,24 @@
             <!-- d-flex and align-items-center .. puts image in the center of the flex box and p-1 will size it -->
             <div class="col-sm-4 d-flex align-items-center p-1" style='background-color: blue;'>
                 <div id='computerGuess'></div>
-                <img class="d-flex justify-content-center" src="scissors.png" alt="" style="object-fit: cover; width: 100%">
+ 
             </div>
-            <!-- score cards for player and computer -->
-            <div id='playerScoreCard'></div>
-            <div id='computerScoreCard'></div>
+        </div>
+
+        <!-- score cards for player and computer------------ -->
+        <div class='row'>  
+            <div class="col-sm-4" id='playerScoreCard'> </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" id='computerScoreCard'> compuyter score</div>
+
+        </div>
+        <!-- player chooses -->
+        <div class='row' style='background-color: pink;'>
+            <div id='playerRock'>Rock</div>
+            <div id='displayChoice'></div>
+            <div id='playerPaper'>Paper</div>
+            <div id='playerScissors'>Scissors</div>
+        
         </div>
     </div>
 
@@ -60,6 +73,7 @@
 
         //player score
         let playerScore = 0;
+        let playerScoreText = "Your Score: " + playerScore;
 
         const ROCK = 'rock';
         const PAPER = 'paper';
@@ -71,12 +85,11 @@
 
         function playerChoseRock(){
             playerChoice = ROCK;
-            // don't forget innerHTML... loads the players choice
-            document.getElementById('displayChoice').innerHTML = playerChoice;
+
 
             //storing the return value from the random computer guess when the window loads...
             computerChoice = randomComputerGuess();
-            document.getElementById('computerGuess').innerHTML = computerChoice;
+
 
 
             if(computerChoice) {
@@ -98,19 +111,29 @@
                 }
             }
 
+
+            document.getElementById('displayPlayersChoice').innerHTML = "<img src='rock1.png' class='d-flex justify-content-center' \
+                                                                         style='object-fit: cover; width: 100%'>";
+
+  // the variable passed into below so it can display the html img string
+  let theChoice = computerChoice + '2.png';
+            // this is how you pass a javascript variable into a html tag. You need to use the  + js variable +. You CANNOT jsut put the
+            // variable name into the string like this .. "<img src='thechoice' class=.... 
+            document.getElementById('computerGuess').innerHTML = "<img src= " + theChoice + " class='d-flex justify-content-center' \
+                                                                         style='object-fit: cover; width: 100%'>";
             document.getElementById('displayBattleOutcome').innerHTML = battleOutcome;
-            document.getElementById('playerScoreCard').innerHTML = playerScore;
+            document.getElementById('playerScoreCard').innerHTML = playerScoreText;
             document.getElementById('computerScoreCard').innerHTML = computerScore;
 
         }
         
         function playerChosePaper(){
             playerChoice = PAPER;
-            document.getElementById('displayChoice').innerHTML = playerChoice;
+
 
             //storing the return value from the random computer guess when the window loads...
             computerChoice = randomComputerGuess();
-            document.getElementById('computerGuess').innerHTML = computerChoice
+
 
             if(computerChoice) {
                 switch(computerChoice){
@@ -129,7 +152,15 @@
                         break;
                 }
             }
+            document.getElementById('displayPlayersChoice').innerHTML = "<img src='paper1.png' class='d-flex justify-content-center' \
+                                                                         style='object-fit: cover; width: 100%'>";
 
+              // the variable passed into below so it can display the html img string
+             let theChoice = computerChoice + '2.png';
+            // this is how you pass a javascript variable into a html tag. You need to use the  + js variable +. You CANNOT jsut put the
+            // variable name into the string like this .. "<img src='thechoice' class=.... 
+            document.getElementById('computerGuess').innerHTML = "<img src= " + theChoice + " class='d-flex justify-content-center' \
+                                                                         style='object-fit: cover; width: 100%'>";
             document.getElementById('displayBattleOutcome').innerHTML = battleOutcome;
             document.getElementById('playerScoreCard').innerHTML = playerScore;
             document.getElementById('computerScoreCard').innerHTML = computerScore;
@@ -137,11 +168,11 @@
 
         function playerChoseScissors() {
             playerChoice = SCISSORS;
-            document.getElementById('displayChoice').innerHTML = playerChoice;
+
 
                         //storing the return value from the random computer guess when the window loads...
                         computerChoice = randomComputerGuess();
-            document.getElementById('computerGuess').innerHTML = computerChoice
+  
 
             if(computerChoice) {
                 switch(computerChoice){
@@ -161,6 +192,14 @@
                  }
             }
 
+            document.getElementById('displayPlayersChoice').innerHTML = "<img src='scissors1.png' class='d-flex justify-content-center' \
+                                                                         style='object-fit: cover; width: 100%'>";
+              // the variable passed into below so it can display the html img string
+            let theChoice = computerChoice + '2.png';
+            // this is how you pass a javascript variable into a html tag. You need to use the  + js variable +. You CANNOT jsut put the
+            // variable name into the string like this .. "<img src='thechoice' class=.... 
+            document.getElementById('computerGuess').innerHTML = "<img src= " + theChoice + " class='d-flex justify-content-center' \
+                                                                         style='object-fit: cover; width: 100%'>";
             document.getElementById('displayBattleOutcome').innerHTML = battleOutcome;
             document.getElementById('playerScoreCard').innerHTML = playerScore;
             document.getElementById('computerScoreCard').innerHTML = computerScore;

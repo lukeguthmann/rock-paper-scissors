@@ -28,10 +28,27 @@
                 </div>
             </div>
             
-            <!-- -------timer PANEL ------------- -->
+
+
+            <!-- -------BATTLE OUTCOME PANEL ------------- -->
             <div class="col-sm-4" style='background-color:red;'>
-                <div id='displayBattleOutcome'> </div>
+
+                <!-- TEXT BOX FORM THAT WHEN CLICKED SUBMIT BUTTON ACTIVATES JS roundsToPlay() function -->
+                <!-- SIZE: this is how long the text box is character length
+                     MAXLENGTH: this is the maximum amount of characters a user can put in -->
+                <form>  
+                    games: <input type="text" id="numberOfGames" name="number" size="2" maxlength="2"/> 
+                    <input type="button" value="cube" onclick="roundsToPlay()"/>  
+                </form>  
+
+                <h1>
+                    <div id='displayBattleOutcome'> </div>
+                </h1>
+                <h1>
+                    <div id='displayBattleRounds'></div>
+                </h1>
             </div>
+
 
             <!-- -------COMPUTER PANEL ------------- -->
             <!-- d-flex and align-items-center .. puts image in the center of the flex box and p-1 will size it -->
@@ -51,7 +68,6 @@
         <!-- player chooses -->
         <div class='row' style='background-color: pink;'>
             <div id='playerRock'>Rock</div>
-            <div id='displayChoice'></div>
             <div id='playerPaper'>Paper</div>
             <div id='playerScissors'>Scissors</div>
         
@@ -73,7 +89,10 @@
 
         //player score
         let playerScore = 0;
-        let playerScoreText = "Your Score: " + playerScore;
+
+        let numberOfRounds = 0;
+
+
 
         const ROCK = 'rock';
         const PAPER = 'paper';
@@ -122,8 +141,8 @@
             document.getElementById('computerGuess').innerHTML = "<img src= " + theChoice + " class='d-flex justify-content-center' \
                                                                          style='object-fit: cover; width: 100%'>";
             document.getElementById('displayBattleOutcome').innerHTML = battleOutcome;
-            document.getElementById('playerScoreCard').innerHTML = playerScoreText;
-            document.getElementById('computerScoreCard').innerHTML = computerScore;
+            document.getElementById('playerScoreCard').innerHTML = "Your score: " + playerScore;
+            document.getElementById('computerScoreCard').innerHTML = "Computer score: " + computerScore;
 
         }
         
@@ -162,8 +181,10 @@
             document.getElementById('computerGuess').innerHTML = "<img src= " + theChoice + " class='d-flex justify-content-center' \
                                                                          style='object-fit: cover; width: 100%'>";
             document.getElementById('displayBattleOutcome').innerHTML = battleOutcome;
-            document.getElementById('playerScoreCard').innerHTML = playerScore;
-            document.getElementById('computerScoreCard').innerHTML = computerScore;
+            document.getElementById('playerScoreCard').innerHTML = "Your score: " + playerScore;
+            document.getElementById('computerScoreCard').innerHTML = "Computer score: " + computerScore;
+
+  
         }
 
         function playerChoseScissors() {
@@ -201,8 +222,8 @@
             document.getElementById('computerGuess').innerHTML = "<img src= " + theChoice + " class='d-flex justify-content-center' \
                                                                          style='object-fit: cover; width: 100%'>";
             document.getElementById('displayBattleOutcome').innerHTML = battleOutcome;
-            document.getElementById('playerScoreCard').innerHTML = playerScore;
-            document.getElementById('computerScoreCard').innerHTML = computerScore;
+            document.getElementById('playerScoreCard').innerHTML = "Your score: " + playerScore;
+            document.getElementById('computerScoreCard').innerHTML = "Computer score: " + computerScore;
 
         }
 
@@ -216,19 +237,30 @@
         }
 
         function userClicksHTML() {
-            document.getElementById('playerRock').onclick = function () { playerChoseRock() };
+            // you can run two or more functions run at once when a user clicks a button. You simply seperate the functions with a
+            // semi colon ; .... You CANNOT have two different onlclick events like this document.getElementById('playerPaper').onclick  ... document.getElementById('playerPaper').onclick 
+            document.getElementById('playerRock').onclick = function () { playerChoseRock(); roundsToPlay() };
             document.getElementById('playerPaper').onclick = function () { playerChosePaper()};
             document.getElementById('playerScissors').onclick = function () { playerChoseScissors()};
 
         }
 
+        // function that is targetting the user input html form and getting the VALUE and saving into local variable
+        function roundsToPlay(){
+            numberOfRounds = document.getElementById('numberOfGames').value;
+            document.getElementById('displayBattleRounds').innerHTML = numberOfRounds;
+            
+        }
+
+ 
         window.onload = function() {
             userClicksHTML();
             //storing the return value from the random computer guess when the window loads...
             computerChoice = randomComputerGuess();
 
-  
         }
+
+
     </script>
 </body>
 

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
    
+        <!-- google fonts for heading -->
+        <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+
     <title>Document</title>
 </head>
 
@@ -14,11 +17,11 @@
     <div class="container">
         <div class='row'>
             <div class='col text-center'>
-                <h1>ROCK PAPER SCISSORS</h1>
+                <h1 class='titleHeading'>ROCK PAPER SCISSORS</h1>
             </div>
         </div>
 
-        <div class='row'>
+        <div class='row' id="putBorderAroundPlayers">
             <!-- -------USER PANEL ------------- -->
             <!-- the SM between col and 4 determins how small the screen can get before the columns start to stack on top of eachother. the
                 sm will allow the window to get quite small before it starts to stack, while Xl will stack on top when viewport is much larger -->
@@ -60,7 +63,7 @@
         </div>
 
         <!-- score cards for player and computer------------ -->
-        <div class='row'>  
+        <div class='row' ID="putBorderAroundScores">  
             <div class="col-sm-4" id='playerScoreCard'> Your score: </div>
             <div class="col-sm-4"></div>
             <div class="col-sm-4" id='computerScoreCard'> Computer score: </div>
@@ -290,6 +293,26 @@
                                                                          style='object-fit: cover; width: 100%'>";
         }
     </script>
+
+<style>
+    body {
+    /* THIS IS HOW YOU MAKE A BACKGROUND IMAGE FILL ENTIRE BACKGROUND */
+    background: url(backgroundImage.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+    .titleHeading {
+        font-family: 'Krona One', sans-serif;
+        font-size: 3em;
+    }
+
+    #putBorderAroundScores, #putBorderAroundPlayers{
+        border: 1px solid black;
+    }
+</style>
 </body>
 
  <!-- BOOTSTRAP COMPONENTS -->

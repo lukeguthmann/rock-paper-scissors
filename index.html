@@ -13,8 +13,8 @@
     <!-- rows must be placed within CONTAINERS. A container can be -->
     <div class="container">
         <div class='row'>
-            <div class='col text-center' style="background-color: aqua;">
-                WEBSITE TITLE HERE
+            <div class='col text-center'>
+                <h1>ROCK PAPER SCISSORS</h1>
             </div>
         </div>
 
@@ -22,7 +22,7 @@
             <!-- -------USER PANEL ------------- -->
             <!-- the SM between col and 4 determins how small the screen can get before the columns start to stack on top of eachother. the
                 sm will allow the window to get quite small before it starts to stack, while Xl will stack on top when viewport is much larger -->
-            <div class="col-sm-4 d-flex align-items-center p-1" style='background-color: yellow;'>
+            <div class="col-sm-4 d-flex align-items-center p-1">
                 <div id='displayPlayersChoice'>
 
                 </div>
@@ -31,28 +31,29 @@
 
 
             <!-- -------BATTLE OUTCOME PANEL ------------- -->
-            <div class="col-sm-4" style='background-color:red;'>
+            <div class="col-sm-4">
 
                 <!-- TEXT BOX FORM THAT WHEN CLICKED SUBMIT BUTTON ACTIVATES JS roundsToPlay() function -->
                 <!-- SIZE: this is how long the text box is character length
                      MAXLENGTH: this is the maximum amount of characters a user can put in -->
                 <form>  
-                    games: <input type="text" id="numberOfGames" name="number" size="2" maxlength="2"/> 
-                    <input type="button" value="cube" onclick="roundsToPlay()"/>  
+                   To play: First input how many games you would like to play in the box, click Play button. Then choose the rock
+                   paper or scissors icon. <input type="text" id="numberOfGames" name="number" size="10" maxlength="6"/> 
+                    <input type="button" value="Play" onclick="roundsToPlay()"/>  
                 </form>  
 
                 <h1>
                     <div id='displayBattleOutcome'> </div>
                 </h1>
-                <h1>
-                    <div id='displayBattleRounds'></div>
-                </h1>
+                <h6>
+                    Games left: <div id='displayBattleRounds'></div>
+                </h6>
             </div>
 
 
             <!-- -------COMPUTER PANEL ------------- -->
             <!-- d-flex and align-items-center .. puts image in the center of the flex box and p-1 will size it -->
-            <div class="col-sm-4 d-flex align-items-center p-1" style='background-color: blue;'>
+            <div class="col-sm-4 d-flex align-items-center p-1">
                 <div id='computerGuess'></div>
  
             </div>
@@ -60,17 +61,18 @@
 
         <!-- score cards for player and computer------------ -->
         <div class='row'>  
-            <div class="col-sm-4" id='playerScoreCard'> </div>
+            <div class="col-sm-4" id='playerScoreCard'> Your score: </div>
             <div class="col-sm-4"></div>
-            <div class="col-sm-4" id='computerScoreCard'> compuyter score</div>
+            <div class="col-sm-4" id='computerScoreCard'> Computer score: </div>
 
         </div>
-        <!-- player chooses -->
-        <div class='row' style='background-color: pink;'>
-            <div id='playerRock'>Rock</div>
-            <div id='playerPaper'>Paper</div>
-            <div id='playerScissors'>Scissors</div>
-        
+        <!-- ------PLAYER CHOOSES THEIR OPTION -->
+        <div class='row d-flex justify-content-center'>
+            <img src='rock1.png' id='playerRock' class='d-flex justify-content-center' style='object-fit: cover; width: 20%'>
+            <img src='paper1.png' id='playerPaper' class='d-flex justify-content-center' style='object-fit: cover; width: 20%'>
+
+            <img src='scissors1.png' id='playerScissors' class='d-flex justify-content-center' style='object-fit: cover; width: 20%'>
+    
         </div>
     </div>
 
@@ -90,6 +92,7 @@
         //player score
         let playerScore = 0;
 
+        //default number of rounds variable
         let numberOfRounds = 0;
 
 
@@ -141,8 +144,9 @@
             document.getElementById('computerGuess').innerHTML = "<img src= " + theChoice + " class='d-flex justify-content-center' \
                                                                          style='object-fit: cover; width: 100%'>";
             document.getElementById('displayBattleOutcome').innerHTML = battleOutcome;
-            document.getElementById('playerScoreCard').innerHTML = "Your score: " + playerScore;
-            document.getElementById('computerScoreCard').innerHTML = "Computer score: " + computerScore;
+            // I have inserted tags also to make the whole pint our bold
+            document.getElementById('playerScoreCard').innerHTML = "<h5>Your score: " + playerScore + "</h5>"
+            document.getElementById('computerScoreCard').innerHTML = "<h5>Computer score: " + computerScore + "</h5>";
 
         }
         
@@ -181,8 +185,8 @@
             document.getElementById('computerGuess').innerHTML = "<img src= " + theChoice + " class='d-flex justify-content-center' \
                                                                          style='object-fit: cover; width: 100%'>";
             document.getElementById('displayBattleOutcome').innerHTML = battleOutcome;
-            document.getElementById('playerScoreCard').innerHTML = "Your score: " + playerScore;
-            document.getElementById('computerScoreCard').innerHTML = "Computer score: " + computerScore;
+            document.getElementById('playerScoreCard').innerHTML = "<h5>Your score: " + playerScore + "</h5>"
+            document.getElementById('computerScoreCard').innerHTML = "<h5>Computer score: " + computerScore + "</h5>";
 
   
         }
@@ -222,8 +226,8 @@
             document.getElementById('computerGuess').innerHTML = "<img src= " + theChoice + " class='d-flex justify-content-center' \
                                                                          style='object-fit: cover; width: 100%'>";
             document.getElementById('displayBattleOutcome').innerHTML = battleOutcome;
-            document.getElementById('playerScoreCard').innerHTML = "Your score: " + playerScore;
-            document.getElementById('computerScoreCard').innerHTML = "Computer score: " + computerScore;
+            document.getElementById('playerScoreCard').innerHTML = "<h5>Your score: " + playerScore + "</h5>"
+            document.getElementById('computerScoreCard').innerHTML = "<h5>Computer score: " + computerScore + "</h5>";
 
         }
 
@@ -239,24 +243,51 @@
         function userClicksHTML() {
             // you can run two or more functions run at once when a user clicks a button. You simply seperate the functions with a
             // semi colon ; .... You CANNOT have two different onlclick events like this document.getElementById('playerPaper').onclick  ... document.getElementById('playerPaper').onclick 
-            document.getElementById('playerRock').onclick = function () { playerChoseRock(); roundsToPlay() };
-            document.getElementById('playerPaper').onclick = function () { playerChosePaper()};
-            document.getElementById('playerScissors').onclick = function () { playerChoseScissors()};
+            document.getElementById('playerRock').onclick = function () { playerChoseRock(); minusRounds() };
+            document.getElementById('playerPaper').onclick = function () { playerChosePaper(); minusRounds()};
+            document.getElementById('playerScissors').onclick = function () { playerChoseScissors(); minusRounds()};
 
         }
 
         // function that is targetting the user input html form and getting the VALUE and saving into local variable
         function roundsToPlay(){
-            numberOfRounds = document.getElementById('numberOfGames').value;
+            //I have made number of rounds a GLOBAL variable
+            numberOfRounds = document.getElementById('numberOfGames').value; 
             document.getElementById('displayBattleRounds').innerHTML = numberOfRounds;
+            console.log(numberOfRounds);
+
             
         }
 
+        //this is minusing a round everytime the rock paper or scissors is selected by the user. It is getting the value for numberOfRounds
+        // from the global in roundsToPlay
+        function minusRounds(){
+            // saying if the numberOfRounds is 0, so either they tried to press rock paper scissors first OR they tried to
+            // they have finished playing and the number of rounds has become zero. So to avoid negative numbers and to clear the page
+            // I have reloaded the whole page.
+            if(numberOfRounds == 0){
+                alert("please input number of rounds prior to playing!!");
+                location.reload();
+            }
+            // minusing a round
+            numberOfRounds--;
+            // displaying the rounds after every click by the user on rock paper or scissors
+            document.getElementById('displayBattleRounds').innerHTML = numberOfRounds;
+            // displaying in the console for debugging
+            console.log(numberOfRounds);
+            // condition if rounds become zero, alert user.
+            if(numberOfRounds == 0){alert("No more rounds left!")};
+        }
  
         window.onload = function() {
             userClicksHTML();
             //storing the return value from the random computer guess when the window loads...
             computerChoice = randomComputerGuess(); 
+            // displaying two default images as soon as the screen loads up
+            document.getElementById('displayPlayersChoice').innerHTML = "<img src='playerImage.png' class='d-flex justify-content-center' \
+                                                                         style='object-fit: cover; width: 100%'>";
+            document.getElementById('computerGuess').innerHTML = "<img src='computerImage.png' class='d-flex justify-content-center' \
+                                                                         style='object-fit: cover; width: 100%'>";
         }
     </script>
 </body>

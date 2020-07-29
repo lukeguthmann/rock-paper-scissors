@@ -1,0 +1,26 @@
+/* importing a google font from a url to be included inside of this css file.
+When this stylesheet is linked to the HTML, it includes all imports. */
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");
+
+/* acessing entire body tag and applying styling to all tags and nested content unless overridden
+below or with in-stye tag style ... <a href=... style=... */
+body {
+    /* Background fills entire page and responsive*/
+    background: url(/img/backgroundImage.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* heading for title using a google font */
+.titleHeading {
+    font-family: 'Krona One', sans-serif;
+    font-size: 3em;
+}
+
+/* BOOTSTRAP container class background colour and border */
+.container {
+    background-color:whitesmoke;
+    border: 1px solid black;
+}

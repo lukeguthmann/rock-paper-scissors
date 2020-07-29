@@ -48,9 +48,9 @@
                 <h1>
                     <div id='displayBattleOutcome'> </div>
                 </h1>
-                <h6>
+
                     <div id='displayBattleRounds'></div>
-                </h6>
+    
             </div>
 
 
@@ -256,7 +256,7 @@
         function roundsToPlay(){
             //I have made number of rounds a GLOBAL variable
             numberOfRounds = document.getElementById('numberOfGames').value; 
-            document.getElementById('displayBattleRounds').innerHTML = numberOfRounds;
+            document.getElementById('displayBattleRounds').innerHTML = "<h1>Rounds left: " + numberOfRounds + "</h1>";
             console.log(numberOfRounds);
 
             
@@ -275,7 +275,7 @@
             // minusing a round
             numberOfRounds--;
             // displaying the rounds after every click by the user on rock paper or scissors
-            document.getElementById('displayBattleRounds').innerHTML = numberOfRounds;
+            document.getElementById('displayBattleRounds').innerHTML = "<h1>Rounds left: " + numberOfRounds + "</h1>";
             // displaying in the console for debugging
             console.log(numberOfRounds);
             // condition if rounds become zero, alert user.

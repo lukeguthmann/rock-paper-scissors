@@ -1,17 +1,23 @@
 
 // ------------- GLOBAL VARIABLES------------
-//player choice storage global variable
+//stores the players choice when choosing rock, paper, or scissors
 let playerChoice ='';
-//computer random choice global variable
+
+//stores the computers choice retrieved from the array
 let computerChoice;
+
 // used for storing the outcome of a battle used in switch statements
 let battleOutcome;
-//computer score
+
+// declaring and initalising computers score starting at zero
 let computerScore = 0;
-//player score
+
+//player score starting at zero
 let playerScore = 0;
+
 //default number of rounds variable
 let numberOfRounds = 0;
+
 //constant variables
 const ROCK = 'rock';
 const PAPER = 'paper';
